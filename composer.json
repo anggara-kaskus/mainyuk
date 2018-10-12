@@ -26,7 +26,7 @@
     "suggest": {
         "cache/filesystem-adapter": "For caching certs and tokens (using Google_Client::setCache)"
     },
-    "autoload": {
+    "--autoload": {
         "psr-0": {
             "Google_": "src/"
         },

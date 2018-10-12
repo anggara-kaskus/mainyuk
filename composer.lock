@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f240004623cfc6d795d23706ad6d7e06",
+    "hash": "822ade9b3004653e8c03cab50fd80ad0",
     "content-hash": "d5e554cc05c4f29c8892901789e20f0d",
     "packages": [
         {
@@ -55,16 +55,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.68",
+            "version": "v0.71",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "f218f5697aa753fa031a09a14ed56a5a438070e4"
+                "reference": "f066aac8c0ea88cf5880611d589fd1e01c4fd082"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/f218f5697aa753fa031a09a14ed56a5a438070e4",
-                "reference": "f218f5697aa753fa031a09a14ed56a5a438070e4",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/f066aac8c0ea88cf5880611d589fd1e01c4fd082",
+                "reference": "f066aac8c0ea88cf5880611d589fd1e01c4fd082",
                 "shasum": ""
             },
             "require": {
@@ -88,20 +88,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-09-03 00:22:49"
+            "time": "2018-10-09 00:22:49"
         },
         {
             "name": "google/auth",
-            "version": "v1.3.3",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "af72b3f50420c801dc35cc07b1fa429ae027b847"
+                "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/af72b3f50420c801dc35cc07b1fa429ae027b847",
-                "reference": "af72b3f50420c801dc35cc07b1fa429ae027b847",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/196237248e636a3554a7d9e4dfddeb97f450ab5c",
+                "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2018-08-27 19:47:35"
+            "time": "2018-09-17 20:29:21"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -865,26 +865,26 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.46",
+            "version": "1.0.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2"
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
                 "shasum": ""
             },
             "require": {
+                "ext-fileinfo": "*",
                 "php": ">=5.5.9"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
             },
             "require-dev": {
-                "ext-fileinfo": "*",
                 "phpspec/phpspec": "^3.4",
                 "phpunit/phpunit": "^5.7.10"
             },
@@ -945,7 +945,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-08-22 07:45:22"
+            "time": "2018-09-14 15:30:29"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1003,29 +1003,35 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.3.2",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "bf329f6c1aadea3299f08ee804682b7c45b326a2"
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/bf329f6c1aadea3299f08ee804682b7c45b326a2",
-                "reference": "bf329f6c1aadea3299f08ee804682b7c45b326a2",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6 || ^7.0",
+                "php": "^7.0",
                 "phpdocumentor/reflection-common": "^1.0.0",
                 "phpdocumentor/type-resolver": "^0.4.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.4"
+                "doctrine/instantiator": "~1.0.5",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.4"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "phpDocumentor\\Reflection\\": [
@@ -1044,7 +1050,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-11-10 14:09:06"
+            "time": "2017-11-30 07:14:17"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1984,16 +1990,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v2.8.45",
+            "version": "v2.8.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "294611f3a0d265bcf049e2da62cb4f712e3ed927"
+                "reference": "4cca41ebe83cd5b4bd0c1a9f6bdfaec7103f97fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/294611f3a0d265bcf049e2da62cb4f712e3ed927",
-                "reference": "294611f3a0d265bcf049e2da62cb4f712e3ed927",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/4cca41ebe83cd5b4bd0c1a9f6bdfaec7103f97fb",
+                "reference": "4cca41ebe83cd5b4bd0c1a9f6bdfaec7103f97fb",
                 "shasum": ""
             },
             "require": {
@@ -2033,20 +2039,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26 09:03:18"
+            "time": "2018-09-08 12:44:02"
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v2.8.45",
+            "version": "v2.8.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "2fd6513f2dd3b08446da420070084db376c0134c"
+                "reference": "ba0b706b5ac1c1afcf7d34507a5a272f51cc7721"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/2fd6513f2dd3b08446da420070084db376c0134c",
-                "reference": "2fd6513f2dd3b08446da420070084db376c0134c",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/ba0b706b5ac1c1afcf7d34507a5a272f51cc7721",
+                "reference": "ba0b706b5ac1c1afcf7d34507a5a272f51cc7721",
                 "shasum": ""
             },
             "require": {
@@ -2090,7 +2096,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-24 10:05:38"
+            "time": "2018-09-21 12:46:38"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -2211,16 +2217,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.15",
+            "version": "v3.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "c2f4812ead9f847cb69e90917ca7502e6892d6b8"
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/c2f4812ead9f847cb69e90917ca7502e6892d6b8",
-                "reference": "c2f4812ead9f847cb69e90917ca7502e6892d6b8",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/640b6c27fed4066d64b64d5903a86043f4a4de7f",
+                "reference": "640b6c27fed4066d64b64d5903a86043f4a4de7f",
                 "shasum": ""
             },
             "require": {
@@ -2266,7 +2272,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-08-10 07:34:36"
+            "time": "2018-10-02 16:33:53"
         },
         {
             "name": "webmozart/assert",
