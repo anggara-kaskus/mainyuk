@@ -2,7 +2,7 @@
 
 session_start();
 $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-$oauth_credentials = './oc.json';
+$oauth_credentials = './private/oc.json';
 
 $client = new Google_Client();
 $client->setAuthConfig($oauth_credentials);
