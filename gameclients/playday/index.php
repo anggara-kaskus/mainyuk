@@ -81,14 +81,18 @@
 			border-color: #060;
 		}
 
+		#extra-life {
+			display: none;
+		}
+
 		button#use-extra-life {
-			background-color: #bf3f3f;
-			color: #fff;
-			font-weight: bold;
-			border: none;
+			border: 1px solid #bf3f3f;
+			line-height: 1.2em;
+			border-radius: 3px;
 		}
 
 		button#use-extra-life:disabled {
+			border-color: #999;
 			background-color: #CCC;
 			color: #999;
 			font-weight: bold;
@@ -161,8 +165,8 @@
 				<br />
 			</div>
 			<div id="info">
-				👥 <span id="subscriber-count">0</span>
-				<button id="use-extra-life" onclick="useExtraLife()">❤️ <span id="extra-life">0</span></button>
+				👥 <span id="subscriber-count">0</span><span id="extra-life">0</span>
+				<button id="use-extra-life" onclick="useExtraLife()">❤️</button>
 			</div>
 			<div id="question" class="correct">
 				<h3 id="question-msg">Question Lorem ipsum dolor sit amet</h3>

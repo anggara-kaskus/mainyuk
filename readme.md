@@ -6,3 +6,6 @@
 * DB_USER
 * DB_PASS
 * DB_NAME
+
+* BASE_URL
+* WS_URL

@@ -199,7 +199,7 @@ function useExtraLife() {
 		ct: 35
 	};
 	console.log(wsData);
-	// sendMessage(JSON.stringify(wsData));
+	sendMessage(JSON.stringify(wsData));
 	$('#use-extra-life').prop('disabled', true);
 }
 
