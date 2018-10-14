@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/db/db.php';
 require_once __DIR__ . '/db/auth.php';
 
 # Log me out

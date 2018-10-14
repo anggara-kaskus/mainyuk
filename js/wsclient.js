@@ -1,7 +1,7 @@
 function createClient(channel)
 {
 	var options = {debug: true, automaticOpen: false};
-	var webSocket = new ReconnectingWebSocket('ws://128.199.146.154:88' + channel, null, options);
+	var webSocket = new ReconnectingWebSocket(WS_URL + channel, null, options);
 
 	webSocket.onopen = function(openEvent) {
 		$('#connect-btn').val('Connected').addClass('connected').prop('disabled', true);

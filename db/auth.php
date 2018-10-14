@@ -1,9 +1,8 @@
 <?php
 
 session_start();
-$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+$redirect_uri = BASE_URL;
 $oauth_credentials = './private/oc.json';
-
 $client = new Google_Client();
 $client->setAuthConfig($oauth_credentials);
 $client->setRedirectUri($redirect_uri);
@@ -24,11 +23,7 @@ function getCurrentUser()
 		} catch(Exception $e) {
 			die($e->getMessage());
 		}
-		#echo "Elapsed: " . round((microtime(true) - $start) / 1000, 4);
 		return $token_data;
 	}
-
-	// if ($access_token = $client->getAccessToken()) {
-	// }
 	return false;
 }
