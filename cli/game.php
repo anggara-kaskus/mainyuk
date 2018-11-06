@@ -84,7 +84,7 @@ class Game
 	public function buildQuestion($index, $question)
 	{
 		unset($question['id'], $question['answer']);
-		$time = microtime(true) * 1000;
+		$time = floor(microtime(true) * 1000);
 		$question['type'] = 'question';
 		$question['gameId'] = $this->matchToken;
 		$question['index'] = $index;
