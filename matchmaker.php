@@ -23,7 +23,7 @@ if (!$currentUser = getCurrentUser()) {
 		$matchmaker->deleteWaitingUser();
 
 		$matchTime = time();
-		$questions = result_array('trivia', '', 0, 2, ['RAND()' => '']);
+		$questions = result_array('trivia', '', 0, 5, ['RAND()' => '']);
 		$matchToken = md5($waitingUser['userId'] . ' vs ' . $userId . ' at ' . $matchTime);
 
 		$matchData = [

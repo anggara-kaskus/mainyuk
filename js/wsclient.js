@@ -48,6 +48,11 @@ function displayResult(jsonData) {
 	$('#question-msg').html(jsonData.q);
 	$('#extra-life').html(jsonData.ext);
 	$('#question').removeClass('answered');
+	$('#timer').hide();
+	$('#myScore').text('Skor Anda: ' + jsonData.myScore);
+	$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
+	$('#scores').show();
+	clearTimeout(tid);
 
 	var buttons = '';
 	for (i in jsonData.o) {
@@ -133,6 +138,7 @@ function matched() {
 var gameId;
 var token;
 var index;
+var tid;
 
 function displayQuestion(question) {
 	gameId = question.gameId;
@@ -145,9 +151,16 @@ function displayQuestion(question) {
 		option = question.options[i];
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
+	$('#timer').text('10');
 	$('#game-ui').html(html).show();
+	tid = setTimeout(countdown, 1000);
 }
 
+function countdown()
+{
+	var time = parseInt($('#timer').text()) - 1;
+	$('#timer').text(time);
+}
 
 function showMatched(json) {
 	$('#other-info, #user-info').hide();

@@ -248,7 +248,7 @@ div.correct {
 	border: 1px solid #ccc;
 }
 
-.correct {
+a.col.options.correct {
 	background: #383;
 	font-weight: bold;
 	color: #fff;
@@ -363,4 +363,14 @@ input[type=button], button {
 
 #match-found i {
 	font-size: 70px;
+}
+
+#timer {
+	color: red;
+	margin: 0 auto;
+}
+
+#scores {
+	text-align: center;
+	color: #333;
 }

@@ -33,6 +33,7 @@
 	</div>
 
 	<div id="game-ui">
+		<div class="row"><span id="timer">10</span></div>
 		<div class="row">
 			<div class="col question">
 				Question Lorem ipsum dolor sit amet?
@@ -49,6 +50,11 @@
 		</div>
 		<div class="row">
 			<a href="#" class="col options">Option 4</a>
+		</div>
+
+		<div class="row" id="scores">
+			<div class="col-6" id="myScore">Skor Anda: 500</div>
+			<div class="col-6" id="enemyScore">Skor Lawan: 999</div>
 		</div>
 	</div>
 

@@ -32,10 +32,10 @@ if (!empty($matchData)) {
 			$userId = $matchData['users'][$i];
 			$enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
 			$answer['myAnswer'] = $matchData['answers'][$index][$userId];
-                        $answer['enemyAnswer'] = $matchData['answers'][$index][$enemyUserId] ?: false;
-                        $answer['correctAnswer'] = $question['answer'];
-                        $answer['myScore'] = $matchData['score'][$userId];
-                        $answer['enemyScore'] = $matchData['score'][$enemyUserId];
+			$answer['enemyAnswer'] = $matchData['answers'][$index][$enemyUserId] ?: false;
+			$answer['correctAnswer'] = $question['answer'];
+			$answer['myScore'] = (int) $matchData['score'][$userId];
+			$answer['enemyScore'] = (int) $matchData['score'][$enemyUserId];
 			$game->publish($channelId, json_encode($answer));
 		}
 
@@ -47,13 +47,13 @@ if (!empty($matchData)) {
 
 
 	foreach ($matchData['channels'] as $i => $channelId) {
-            $userId = $matchData['users'][$i];
-            $enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
-            $publishData['myScore'] = $matchData['score'][$userId];
-            $publishData['enemyScore'] = $matchData['score'][$enemyUserId];
-	    // rank
-            $game->publish($channelId, json_encode($publishData));
-        }
+			$userId = $matchData['users'][$i];
+			$enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
+			$publishData['myScore'] = $matchData['score'][$userId];
+			$publishData['enemyScore'] = $matchData['score'][$enemyUserId];
+		// rank
+			$game->publish($channelId, json_encode($publishData));
+		}
 
 	echo "Game finished\n";
 
@@ -114,15 +114,15 @@ class Game
 		return $question;
 	}
 
-        public function buildAnswer($matchData, $index, $question)
-        {
-                unset($question['id']);
+		public function buildAnswer($matchData, $index, $question)
+		{
+				unset($question['id']);
 		$question['type'] = 'answer';
-                $question['gameId'] = $this->matchToken;
-                $question['index'] = $index;
-                $question['options'] = json_decode($question['options']);
-                return $question;
-        }
+				$question['gameId'] = $this->matchToken;
+				$question['index'] = $index;
+				$question['options'] = json_decode($question['options']);
+				return $question;
+		}
 
 	public function bothHaveAnswered($matchData, $index)
 	{
