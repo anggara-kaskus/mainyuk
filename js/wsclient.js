@@ -16,7 +16,7 @@ function createClient(channel)
 	};
 	webSocket.onmessage = function (messageEvent) {
 		var wsMsg = messageEvent.data;
-		console.log("Received message: " + wsMsg);
+		// console.log("Received message: " + wsMsg);
 		try {
 			var json = $.parseJSON(wsMsg);
 			switch (json.type) {
@@ -31,8 +31,10 @@ function createClient(channel)
 						$('.selected').addClass('wrong').removeClass('selected');
 						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
 					}
+				break;
 			}
 		} catch(e) {
+			console.error(e);
 		}
 	};
 
@@ -120,7 +122,7 @@ function findOpponent() {
 			if (json.success && json.status == 'waiting') {
 				$('#play-liga').html('<i class="fa fa-hourglass-o" aria-hidden="true"></i> Mencari lawan ...');
 			} else if (json.status == 'matched') {
-				matched();
+				$('#play-liga').addClass('matched').html('<i class="fa fa-check-circle-o" aria-hidden="true"></i> Memulai permainan');
 			}
 		} catch (e) {
 			console.error(e);
@@ -129,10 +131,6 @@ function findOpponent() {
 
 	// $('#other-info, #user-info').hide();
 	// $('#game-ui').show();
-}
-
-function matched() {
-	$('#play-liga').addClass('matched').html('<i class="fa fa-check-circle-o" aria-hidden="true"></i> Memulai permainan');
 }
 
 var gameId;
@@ -153,13 +151,14 @@ function displayQuestion(question) {
 	}
 	$('#timer').text('10').show();
 	$('#question-wrapper').html(html).show();
-	tid = setTimeout(countdown, 1000);
+	countdown();
 }
 
 function countdown()
 {
 	var time = parseInt($('#timer').text()) - 1;
 	$('#timer').text(time);
+	tid = setTimeout(countdown, 1000);
 }
 
 function showMatched(json) {
