@@ -151,8 +151,8 @@ function displayQuestion(question) {
 		option = question.options[i];
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
-	$('#timer').text('10');
-	$('#game-ui').html(html).show();
+	$('#timer').text('10').show();
+	$('#question-wrapper').html(html).show();
 	tid = setTimeout(countdown, 1000);
 }
 

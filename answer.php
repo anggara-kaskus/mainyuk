@@ -22,30 +22,30 @@ if (!$currentUser = getCurrentUser()) {
 		$time = base_convert($base36time, 36, 10);
 		$index = intval($_POST['index']);
 		$currentTime = time();
-                if (!empty($matchData['answers'][$index][$userId]) || crc32($time . 'Hello, Novita!' . $index) != $crcHash || $time < $currentTime - 10) {
-                        header('HTTP/1.0 400 Bad Request');
-                        echo json_encode(['error' => true]);
-                        return;
-                }
+		if (!empty($matchData['answers'][$index][$userId]) || crc32($time . 'Hello, Novita!' . $index) != $crcHash || $time < $currentTime - 10) {
+			header('HTTP/1.0 400 Bad Request');
+			echo json_encode(['error' => true]);
+			return;
+		}
 
-                $answer = $_POST['answer'];
-                $correctAnswer = $matchData['questions'][$index]['answer'];
-                $matchData['answers'][$index][$userId] = $answer;
+		$answer = $_POST['answer'];
+		$correctAnswer = $matchData['questions'][$index]['answer'];
+		$matchData['answers'][$index][$userId] = $answer;
 
-                $score = 0;
-                if ($answer == $correctAnswer) {
-                        $score = 100 + $index * 10;
-                        $timeDiff = $currentTime - $time;
-                        if ($timeDiff > 6) {
-                                $score -= 25;
-                        } elseif($timeDiff > 8) {
-                                $score -= 50;
-                        }
-                }
+		$score = 0;
+		if ($answer == $correctAnswer) {
+			$score = 100 + $index * 10;
+			$timeDiff = $currentTime - $time;
+			if ($timeDiff > 6) {
+				$score -= 25;
+			} elseif($timeDiff > 8) {
+				$score -= 50;
+			}
+		}
 
-                $matchData['score'][$userId] = ($matchData['score'][$userId] ?: 0) + $score;
-                $matchmaker->saveMatchData($matchToken, $matchData);
-                $enemyUserId = $userId == $matchData['users'][0] ? $matchData['users'][0] : $matchData['users'][1];
+		$matchData['score'][$userId] = ($matchData['score'][$userId] ?: 0) + $score;
+		$matchmaker->saveMatchData($matchToken, $matchData);
+		$enemyUserId = $userId == $matchData['users'][0] ? $matchData['users'][0] : $matchData['users'][1];
 
 		$matchmaker->saveMatchData($matchToken, $matchData);
 
@@ -56,8 +56,8 @@ if (!$currentUser = getCurrentUser()) {
 		];
 		echo json_encode($data);
 	} else {
-                header('HTTP/1.0 403 Forbidden');
-                echo json_encode(['error' => true]);
+		header('HTTP/1.0 403 Forbidden');
+		echo json_encode(['error' => true]);
 	}
 }
 
@@ -101,8 +101,8 @@ class Matchmaker
 		$this->memcached->set('match_' . $matchToken, $matchData, 600);
 	}
 
-        public function getMatchData($matchToken)
-        {
-                return $this->memcached->get('match_' . $matchToken);
-        }
+	public function getMatchData($matchToken)
+	{
+		return $this->memcached->get('match_' . $matchToken);
+	}
 }

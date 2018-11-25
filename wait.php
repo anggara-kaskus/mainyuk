@@ -34,22 +34,24 @@
 
 	<div id="game-ui">
 		<div class="row"><span id="timer">10</span></div>
-		<div class="row">
-			<div class="col question">
-				Question Lorem ipsum dolor sit amet?
+		<div id="question-wrapper">
+			<div class="row">
+				<div class="col question">
+					Question Lorem ipsum dolor sit amet?
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<a href="#" class="col options">Option 1</a>
-		</div>
-		<div class="row">
-			<a href="#" class="col options">Option 2</a>
-		</div>
-		<div class="row">
-			<a href="#" class="col options">Option 3</a>
-		</div>
-		<div class="row">
-			<a href="#" class="col options">Option 4</a>
+			<div class="row">
+				<a href="#" class="col options">Option 1</a>
+			</div>
+			<div class="row">
+				<a href="#" class="col options">Option 2</a>
+			</div>
+			<div class="row">
+				<a href="#" class="col options">Option 3</a>
+			</div>
+			<div class="row">
+				<a href="#" class="col options">Option 4</a>
+			</div>
 		</div>
 
 		<div class="row" id="scores">
