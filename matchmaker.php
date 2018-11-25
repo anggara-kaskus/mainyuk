@@ -15,6 +15,10 @@ if (!$currentUser = getCurrentUser()) {
 	$userName = explode('@', $currentUser['email'])[0];
 	$matchmaker = new Matchmaker();
 
+	if ($matchmaker->isInGame($userId)) {
+		header('HTTP/1.0 403 Forbidden');
+		echo json_encode(['error' => true]);
+	}
 	// $waitingUsers = multi_result_query("SELECT * FROM matchmaking WHERE userId != '$userId' ORDER BY request_time LIMIT 1 FOR UPDATE");
 	$waitingUser = $matchmaker->getWaitingUser();
 
@@ -88,5 +92,10 @@ class Matchmaker
 	public function saveMatchData($matchToken, $matchData)
 	{
 		$this->memcached->set('match_' . $matchToken, $matchData, 600);
+	}
+
+	public function isInGame($userId)
+	{
+		return $this->memcached->get('ingame_' . $userId);
 	}
 }

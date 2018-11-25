@@ -51,6 +51,9 @@ if (!empty($matchData)) {
 		$publishData['enemyScore'] = $matchData['score'][$enemyUserId];
 		// rank
 		$game->publish($channelId, json_encode($publishData));
+
+		$this->memcached->delete('ingame_' . $userId);
+		$this->memcached->delete('ingame_' . $enemyUserId);
 	}
 
 	echo "Game finished\n";
@@ -78,6 +81,9 @@ class Game
 	public function getMatchData()
 	{
 		$this->matchData = $this->memcached->get('match_' . $this->matchToken);
+		foreach ($this->matchData['users'] as $userId) {
+			$this->memcached->set('ingame_' . $userId, 1, 600);
+		}
 		return $this->matchData;
 	}
 
