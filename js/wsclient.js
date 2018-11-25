@@ -31,11 +31,11 @@ function createClient(channel)
 						$('.selected').addClass('wrong').removeClass('selected');
 						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
 					}
+					answerable = true;
 					clearTimeout(tid);
 					$('#timer').text('');
 					$('#myScore').text('Skor Anda: ' + json.myScore);
 					$('#enemyScore').text('Skor Lawan: ' + json.enemyScore);
-					$('#scores').show();
 				break;
 				case 'result':
 					if (json.myScore > json.enemyScore) {
@@ -149,21 +149,23 @@ var gameId;
 var token;
 var index;
 var tid;
+var answerable;
 
 function displayQuestion(question) {
 	gameId = question.gameId;
 	token = question.token;
 	index = question.index;
 
-	$('#other-info, #user-info, #match-found, #scores').hide();
+	$('#other-info, #user-info, #match-found').hide();
 	var html = '<div class="row"><div class="col question">' + question.question + '</div></div>';
 	for (i in question.options) {
 		option = question.options[i];
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
-	$('#timer').text('10').show();
+	$('#timer').text('11').show();
 	$('#question-wrapper').html(html)
 	$('#game-ui').show();
+	answerable = true;
 	countdown();
 }
 
@@ -185,6 +187,7 @@ function showMatched(json) {
 }
 
 function answer(answer) {
+	if (!answerable) return;
 	lastAnswer = answer;
 		$.post('./answer.php', {gameId: gameId, answer: answer, token: token, index: index}, function (result) {
 				try {

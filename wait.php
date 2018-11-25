@@ -84,7 +84,7 @@
 			<span id="get-ready">Bersiap...</span>
 		</div>
 		<div class="row" id="done-wrapper">
-			<button id="done" class="col" onclick="done()">Tutup</button>
+			<button id="done" class="col col-10 col-offset-1" onclick="done()">Tutup</button>
 		</div>
 	</div>
 <?php include './global/footer.php';?>
