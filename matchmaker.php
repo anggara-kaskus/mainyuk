@@ -12,6 +12,7 @@ if (!$currentUser = getCurrentUser()) {
 } else {
 	$start = microtime(true);
 	$userId = $currentUser['sub'];
+	$userName = explode('@', $currentUser['email'])[0];
 	$matchmaker = new Matchmaker();
 
 	// $waitingUsers = multi_result_query("SELECT * FROM matchmaking WHERE userId != '$userId' ORDER BY request_time LIMIT 1 FOR UPDATE");
@@ -27,6 +28,7 @@ if (!$currentUser = getCurrentUser()) {
 
 		$matchData = [
 			'users' => [$waitingUser['userId'], $userId],
+			'usernames' => [$waitingUser['userName'], $userName],
 			'channels' => [$waitingUser['userChannel'], $currentUser['userChannel']],
 			'questions' => $questions,
 			'time' => time(),
@@ -41,7 +43,7 @@ if (!$currentUser = getCurrentUser()) {
 	} else {
 		// insert('matchmaking', $matchmakingData);
 
-		$matchmaker->saveWaitingUser($userId, $currentUser['userChannel']);
+		$matchmaker->saveWaitingUser($userId, $currentUser['userChannel'], $userName);
 		// exec(Fake enemy checker)
 		echo json_encode(['success' => true, 'status' => 'waiting']);
 	}
@@ -65,10 +67,11 @@ class Matchmaker
 		return $result;
 	}
 
-	public function saveWaitingUser($userId, $userChannel)
+	public function saveWaitingUser($userId, $userChannel, $userName)
 	{
 		$matchmakingData = [
 			'userId' => $userId,
+			'userName' => $userName,
 			'time' => time(),
 			'userChannel' => $userChannel,
 		];

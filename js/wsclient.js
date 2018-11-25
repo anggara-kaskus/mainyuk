@@ -20,7 +20,7 @@ function createClient(channel)
 		try {
 			var json = $.parseJSON(wsMsg);
 			switch (json.type) {
-				case 'matched' : displayEnemy();
+				case 'matched' : showMatched(json);
 					break;
 				case 'question' : displayQuestion(json);
 					break;
@@ -139,25 +139,33 @@ function displayQuestion(question) {
 	token = question.token;
 	index = question.index;
 
-	$('#other-info, #user-info').hide();
+	$('#other-info, #user-info, #match-found').hide();
 	var html = '<div class="row"><div class="col question">' + question.question + '</div></div>';
 	for (i in question.options) {
 		option = question.options[i];
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
-        $('#game-ui').html(html).show();
+	$('#game-ui').html(html).show();
+}
+
+
+function showMatched(json) {
+	$('#other-info, #user-info').hide();
+	$('#match-found-username').text(json.usernames[0]);
+	$('#match-found-opponent').text(json.usernames[1]);
+	$('#match-found').show();
 }
 
 function answer(answer) {
 	lastAnswer = answer;
-        $.post('./answer.php', {gameId: gameId, answer: answer, token: token, index: index}, function (result) {
-                try {
-                        var json = $.parseJSON(result);
-                        if (json.success) {
-                                $('.option' + index + '_' + json.myAnswer).addClass('selected');
-                        }
-                } catch (e) {
-                        console.error(e);
-                }
-        });
+		$.post('./answer.php', {gameId: gameId, answer: answer, token: token, index: index}, function (result) {
+				try {
+						var json = $.parseJSON(result);
+						if (json.success) {
+								$('.option' + index + '_' + json.myAnswer).addClass('selected');
+						}
+				} catch (e) {
+						console.error(e);
+				}
+		});
 }

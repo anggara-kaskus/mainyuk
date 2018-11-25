@@ -7,12 +7,18 @@
 		});
 	</script>
 	<div class="row" id="user-info">
-		<div class="col-8 offset-2" id="user-avatar">
+		<div class="col-8 offset-2">
 			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 		</div>
-		<div class="col-8 offset-2" id="user-avatar"><?php echo explode('@', $currentUser['email'])[0];?></div>
+		<div class="col-8 offset-2"><?php echo explode('@', $currentUser['email'])[0];?></div>
 	</div>
 
+	<div class="row" id="user-info">
+		<div class="col-8 offset-2">
+			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+		</div>
+		<div class="col-8 offset-2"><?php echo explode('@', $currentUser['email'])[0];?></div>
+	</div>
 
 	<div id="other-info">
 		<div class="row">
@@ -53,4 +59,25 @@
 		</div>
 	</div>
 
+	<div id="match-found">
+		<div class="row">
+			<div class="col-4 offset-1">
+				<div>
+					<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+				</div>
+				<div id="match-found-username">ebureg</div>
+			</div>
+
+			<div class="col-2">
+				<h3 style="margin-top:1em;">vs</h3>
+			</div>
+
+			<div class="col-4">
+				<div>
+					<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+				</div>
+				<div id="match-found-opponent">ebureg</div>
+			</div>
+		</div>
+	</div>
 <?php include './global/footer.php';?>

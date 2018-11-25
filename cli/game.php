@@ -8,7 +8,7 @@ $game = new Game($matchToken);
 $matchData = $game->getMatchData();
 if (!empty($matchData)) {
 	echo "Match data found: $matchToken\n";
-	$game->sendToUsers('welcome');
+	$game->sendToUsers(['type' => 'matched', 'users' => $matchData['usernames']]);
 	sleep(5);
 
 	var_dump($matchData);
