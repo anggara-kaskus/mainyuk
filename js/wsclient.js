@@ -25,15 +25,16 @@ function createClient(channel)
 				case 'question' : displayQuestion(json);
 					break;
 				case 'answer' :
+					clearTimeout(tid);
 					if (json.correctAnswer == json.myAnswer) {
 						$('.selected').addClass('correct').removeClass('selected');
+						$('#timer').text('Benar!');
 					} else {
 						$('.selected').addClass('wrong').removeClass('selected');
 						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
+						$('#timer').text('Salah :(');
 					}
-					answerable = true;
-					clearTimeout(tid);
-					$('#timer').text('&nbsp;');
+					answerable = false;
 					$('#myScore').text('Skor Anda: ' + json.myScore);
 					$('#enemyScore').text('Skor Lawan: ' + json.enemyScore);
 				break;
