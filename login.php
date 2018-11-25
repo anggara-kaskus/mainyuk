@@ -4,7 +4,7 @@
 		<div class="row">
 			<div id="logo" class="col-8 offset-2">
 				<h1>Main Yuk!</h1>
-				<p>Sambil belajar dapet duit</p>
+				<!--<p>Sambil belajar dapet duit</p>-->
 			</div>
 		</div>
 	</div>

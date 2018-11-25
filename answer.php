@@ -51,9 +51,8 @@ if (!$currentUser = getCurrentUser()) {
 
 		$data = [
 			'success' => true,
-			'correctAnswer' => $correctAnswer,
+			'type' => 'confirm',
 			'myAnswer' => $answer,
-			'enemyHasAnswered' => count($matchData['answers'][$index]) > 1
 		];
 		echo json_encode($data);
 	} else {

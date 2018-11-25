@@ -10,7 +10,7 @@
 		<div class="col-8 offset-2" id="user-avatar">
 			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
 		</div>
-		<div class="col-8 offset-2" id="user-avatar">ebureg</div>
+		<div class="col-8 offset-2" id="user-avatar"><?php echo explode('@', $currentUser['email'])[0];?></div>
 	</div>
 
 

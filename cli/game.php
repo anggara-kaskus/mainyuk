@@ -15,25 +15,46 @@ if (!empty($matchData)) {
 
 	foreach ($matchData['questions'] as $index => $question) {
 		echo "Sending question #$index\n";
-		$question = $game->buildQuestion($index, $question);
-		$game->sendToUsers($question);
+		$publishQuestion = $game->buildQuestion($index, $question);
+		$game->sendToUsers($publishQuestion);
 		$bothAnswered = false;
 
 		$counter = 10;
 		while (!$bothAnswered && --$counter) {
-			$bothAnswered = $game->bothHaveAnswered($index);
+			$matchData = $game->getMatchData();
+			$bothAnswered = $game->bothHaveAnswered($matchData, $index);
 			echo $counter;
 			sleep(1);
 		}
 
-		$game->buildAnswer($index, $question);
+		$answer = $game->buildAnswer($matchData, $index, $question);
+		foreach ($matchData['channels'] as $i => $channelId) {
+			$userId = $matchData['users'][$i];
+			$enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
+			$answer['myAnswer'] = $matchData['answers'][$index][$userId];
+                        $answer['enemyAnswer'] = $matchData['answers'][$index][$enemyUserId] ?: false;
+                        $answer['correctAnswer'] = $question['answer'];
+                        $answer['myScore'] = $matchData['score'][$userId];
+                        $answer['enemyScore'] = $matchData['score'][$enemyUserId];
+			$game->publish($channelId, json_encode($answer));
+		}
+
 		echo "Preparing next question...\n";
 		if ($bothAnswered) {
 			sleep(3);
 		}
 	}
 
-	$game->sendToUsers('$result');
+
+	foreach ($matchData['channels'] as $i => $channelId) {
+            $userId = $matchData['users'][$i];
+            $enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
+            $publishData['myScore'] = $matchData['score'][$userId];
+            $publishData['enemyScore'] = $matchData['score'][$enemyUserId];
+	    // rank
+            $game->publish($channelId, json_encode($publishData));
+        }
+
 	echo "Game finished\n";
 
 } else {
@@ -93,7 +114,7 @@ class Game
 		return $question;
 	}
 
-        public function buildAnswer($index, $question)
+        public function buildAnswer($matchData, $index, $question)
         {
                 unset($question['id']);
 		$question['type'] = 'answer';
@@ -103,9 +124,8 @@ class Game
                 return $question;
         }
 
-	public function bothHaveAnswered($index)
+	public function bothHaveAnswered($matchData, $index)
 	{
-		$matchData = $this->getMatchData();
 		if (!empty($matchData['answers'][$index])) {
 			if (count($matchData['answers'][$index] == 2)) {
 				return true;

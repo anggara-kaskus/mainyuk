@@ -248,15 +248,15 @@ div.correct {
 	border: 1px solid #ccc;
 }
 
-#button-wrapper button.correct {
+.correct {
 	background: #383;
 	font-weight: bold;
 	color: #fff;
 	border-color: #060;
 }
 
-#button-wrapper button.selected {
-	background: #66C;
+a.col.options.selected {
+	background: #2776ca;
 	font-weight: bold;
 	color: #fff;
 	border-color: #060;

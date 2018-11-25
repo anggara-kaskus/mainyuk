@@ -4,15 +4,11 @@ function createClient(channel)
 	var webSocket = new ReconnectingWebSocket(WS_URL + channel, null, options);
 
 	webSocket.onopen = function(openEvent) {
-		$('#connect-btn').val('Connected').addClass('connected').prop('disabled', true);
-		console.log("Logging in...");
-		// startVibrate([100, 50, 100, 50, 100]);
 		$('#disconnected').hide();
 	};
 	webSocket.onclose = function (closeEvent) {
 		console.log("WebSocket CLOSE: " + JSON.stringify(closeEvent, null, 4));
 		$('#disconnected').show();
-		setTimeout(function(){onConnectClick();}, 10000);
 	};
 	webSocket.onerror = function (errorEvent) {
 		console.log("WebSocket ERROR: " + JSON.stringify(errorEvent, null, 4));
@@ -27,7 +23,14 @@ function createClient(channel)
 				case 'matched' : displayEnemy();
 					break;
 				case 'question' : displayQuestion(json);
-					break
+					break;
+				case 'answer' :
+					if (json.correctAnswer == json.myAnswer) {
+						$('.selected').addClass('correct').removeClass('selected');
+					} else {
+						$('.selected').addClass('wrong').removeClass('selected');
+						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
+					}
 			}
 		} catch(e) {
 		}
@@ -39,22 +42,6 @@ function createClient(channel)
 		}
 	}
 	return webSocket;
-}
-
-function displayQuestion(jsonData) {
-	$('#question-msg').html(jsonData.q);
-	$('#question').removeClass('answered correct wrong');
-	$('#extra-life').html(jsonData.ext);
-	var buttons = '';
-	var options = [];
-	for (i in jsonData.o) {
-		option = jsonData.o[i];
-		buttons += '<button onclick="sendAnswer(\'' + jsonData.id + '\', \'' + option.id + '\', this)">'+ option.val +'</button>';
-		options.push(option.val);
-	}
-	$('#button-wrapper').html(buttons);
-	startVibrate([200, 50, 200]);
-	search(jsonData.q, options);
 }
 
 function displayResult(jsonData) {
@@ -156,7 +143,7 @@ function displayQuestion(question) {
 	var html = '<div class="row"><div class="col question">' + question.question + '</div></div>';
 	for (i in question.options) {
 		option = question.options[i];
-		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options">' + option + '</a></div>';
+		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
         $('#game-ui').html(html).show();
 }
@@ -167,15 +154,10 @@ function answer(answer) {
                 try {
                         var json = $.parseJSON(result);
                         if (json.success) {
-                                $('#play-liga').html('<i class="fa fa-hourglass-o" aria-hidden="true"></i> Mencari lawan ...');
-                        } else if (json.status == 'matched') {
-                                matched();
+                                $('.option' + index + '_' + json.myAnswer).addClass('selected');
                         }
                 } catch (e) {
                         console.error(e);
                 }
         });
-
-        $('#other-info, #user-info').hide();
-        // $('#game-ui').show();
 }
