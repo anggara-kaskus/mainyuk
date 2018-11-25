@@ -55,8 +55,8 @@
 		</div>
 
 		<div class="row" id="scores">
-			<div class="col-6" id="myScore">Skor Anda: 500</div>
-			<div class="col-6" id="enemyScore">Skor Lawan: 999</div>
+			<div class="col-6" id="myScore">Skor Anda: 0</div>
+			<div class="col-6" id="enemyScore">Skor Lawan: 0</div>
 		</div>
 	</div>
 
@@ -80,8 +80,11 @@
 				<div id="match-found-opponent">ebureg</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="get-ready-wrapper">
 			<span id="get-ready">Bersiap...!!!</span>
+		</div>
+		<div class="row" id="done-wrapper">
+			<button id="done" onclick="done()">Tutup</button>
 		</div>
 	</div>
 <?php include './global/footer.php';?>

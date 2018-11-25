@@ -185,3 +185,9 @@ function answer(answer) {
 				}
 		});
 }
+
+function done() {
+	$('#play-liga').html('Main Liga');
+	$('#match-found, #game-ui').hide();
+	$('#other-info, #user-info, #get-ready-wrapper').show();
+}

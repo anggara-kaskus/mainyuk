@@ -40,14 +40,13 @@ if (!empty($matchData)) {
 		}
 
 		echo "Preparing next question...\n";
-		if ($bothAnswered) {
-			sleep(3);
-		}
+		sleep(3);
 	}
 
 	foreach ($matchData['channels'] as $i => $channelId) {
 		$userId = $matchData['users'][$i];
 		$enemyUserId = $i ? $matchData['users'][0] : $matchData['users'][1];
+		$publishData['type'] = 'result';
 		$publishData['myScore'] = $matchData['score'][$userId];
 		$publishData['enemyScore'] = $matchData['score'][$enemyUserId];
 		// rank
@@ -125,9 +124,8 @@ class Game
 
 	public function bothHaveAnswered($matchData, $index)
 	{
-		var_dump($matchData);
 		if (!empty($matchData['answers'][$index])) {
-			if (count($matchData['answers'][$index] == 2)) {
+			if (count($matchData['answers'][$index]) == 2) {
 				return true;
 			}
 		}
