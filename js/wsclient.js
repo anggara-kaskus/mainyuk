@@ -31,6 +31,10 @@ function createClient(channel)
 						$('.selected').addClass('wrong').removeClass('selected');
 						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
 					}
+					$('#timer').hide();
+					$('#myScore').text('Skor Anda: ' + jsonData.myScore);
+					$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
+					$('#scores').show();
 				break;
 			}
 		} catch(e) {
@@ -50,10 +54,6 @@ function displayResult(jsonData) {
 	$('#question-msg').html(jsonData.q);
 	$('#extra-life').html(jsonData.ext);
 	$('#question').removeClass('answered');
-	$('#timer').hide();
-	$('#myScore').text('Skor Anda: ' + jsonData.myScore);
-	$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
-	$('#scores').show();
 	clearTimeout(tid);
 
 	var buttons = '';

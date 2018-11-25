@@ -40,7 +40,7 @@ if (!empty($matchData)) {
 		}
 
 		echo "Preparing next question...\n";
-		sleep(3);
+		sleep(5);
 	}
 
 	foreach ($matchData['channels'] as $i => $channelId) {
