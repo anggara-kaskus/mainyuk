@@ -33,8 +33,8 @@ function createClient(channel)
 					}
 					clearTimeout(tid);
 					$('#timer').text('');
-					$('#myScore').text('Skor Anda: ' + jsonData.myScore);
-					$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
+					$('#myScore').text('Skor Anda: ' + json.myScore);
+					$('#enemyScore').text('Skor Lawan: ' + json.enemyScore);
 					$('#scores').show();
 				break;
 				case 'result':
@@ -47,7 +47,7 @@ function createClient(channel)
 					}
 
 					$('#other-info, #user-info, #game-ui').hide();
-					$('#match-found').show();
+					$('#match-found, #done-wrapper').show();
 				break;
 			}
 		} catch(e) {
@@ -200,7 +200,7 @@ function answer(answer) {
 
 function done() {
 	$('#play-liga').html('Main Liga');
-	$('#match-found, #game-ui').hide();
+	$('#match-found, #game-ui, #done-wrapper').hide();
 	$('#get-ready').text('Bersiap...');
 	$('#other-info, #user-info, #get-ready-wrapper').show();
 }
