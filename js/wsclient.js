@@ -33,7 +33,7 @@ function createClient(channel)
 					}
 					answerable = true;
 					clearTimeout(tid);
-					$('#timer').text('');
+					$('#timer').text('&nbsp;');
 					$('#myScore').text('Skor Anda: ' + json.myScore);
 					$('#enemyScore').text('Skor Lawan: ' + json.enemyScore);
 				break;
@@ -162,7 +162,7 @@ function displayQuestion(question) {
 		option = question.options[i];
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
-	$('#timer').text('11').show();
+	$('#timer').text('10').show();
 	$('#question-wrapper').html(html)
 	$('#game-ui').show();
 	answerable = true;
