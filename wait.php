@@ -13,13 +13,6 @@
 		<div class="col-8 offset-2"><?php echo explode('@', $currentUser['email'])[0];?></div>
 	</div>
 
-	<div class="row" id="user-info">
-		<div class="col-8 offset-2">
-			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
-		</div>
-		<div class="col-8 offset-2"><?php echo explode('@', $currentUser['email'])[0];?></div>
-	</div>
-
 	<div id="other-info">
 		<div class="row">
 			<div class="col info">
@@ -78,6 +71,9 @@
 				</div>
 				<div id="match-found-opponent">ebureg</div>
 			</div>
+		</div>
+		<div class="row">
+			<span id="get-ready">Bersiap...!!!</span>
 		</div>
 	</div>
 <?php include './global/footer.php';?>

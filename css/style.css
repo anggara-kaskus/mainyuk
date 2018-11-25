@@ -75,10 +75,10 @@ body {
 
 #btm-ad {
 	position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    text-align: center;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	text-align: center;
 }
 
 .navbar-dark .navbar-toggler {
@@ -107,32 +107,32 @@ body {
 }
 
 #game-ui {
-    display: none;
-    top: 20vh;
-    position: relative;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 2px 2px #0005;
-    margin: 5px;
-    padding: 5px;
+	display: none;
+	top: 20vh;
+	position: relative;
+	background: #fff;
+	border-radius: 3px;
+	box-shadow: 2px 2px #0005;
+	margin: 5px;
+	padding: 5px;
 }
 
 .col.question {
-    text-align: center;
-    color: #333;
-    margin: 10px 5px;
+	text-align: center;
+	color: #333;
+	margin: 10px 5px;
 }
 
 a.col.options {
 	text-decoration: none;
-    display: block;
-    border-radius: 5px;
-    box-shadow: 2px 2px #0004;
-    border: 1px solid #888;
-    margin: 5px 20px;
-    padding: 10px;
-    font-size: 0.8rem;
-    color: #666;
+	display: block;
+	border-radius: 5px;
+	box-shadow: 2px 2px #0004;
+	border: 1px solid #888;
+	margin: 5px 20px;
+	padding: 10px;
+	font-size: 0.8rem;
+	color: #666;
 }
 
 @-webkit-keyframes Gradient {
@@ -179,7 +179,7 @@ a.col.options {
 
 @keyframes blinker {
   50% {
-    opacity: 0;
+	opacity: 0;
   }
 }
 
@@ -304,9 +304,9 @@ input[type=button], button {
 }
 
 #user-info {
-    text-align: center;
-    top: 20vh;
-    position: relative;
+	text-align: center;
+	top: 20vh;
+	position: relative;
 }
 
 #user-info i {
@@ -343,4 +343,24 @@ input[type=button], button {
 .star {
 	color: #7e00ff;
 	text-shadow: 1px 1px #0003;
+}
+
+#match-found {
+	display: none;
+	top: 20vh;
+	position: relative;
+	margin: 5px;
+	padding: 5px;
+	text-align: center;
+}
+
+#get-ready {
+	font-size: 30px;
+	font-weight: bold;
+	font-style: italic;
+	margin: 0 auto;
+}
+
+#match-found i {
+	font-size: 70px;
 }
