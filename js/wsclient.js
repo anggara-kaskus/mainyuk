@@ -36,6 +36,18 @@ function createClient(channel)
 					$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
 					$('#scores').show();
 				break;
+				case 'result':
+					if (json.myScore > json.enemyScore) {
+						$('#get-ready').text('Anda Menang!!!');
+					} else if (json.myScore < json.enemyScore) {
+						$('#get-ready').text('Kalah :(');
+					} else {
+						$('#get-ready').text('Pertandingan Seri');
+					}
+
+					$('#other-info, #user-info').hide();
+					$('#match-found').show();
+				break;
 			}
 		} catch(e) {
 			console.error(e);
@@ -189,5 +201,6 @@ function answer(answer) {
 function done() {
 	$('#play-liga').html('Main Liga');
 	$('#match-found, #game-ui').hide();
+	$('#get-ready').text('Bersiap...');
 	$('#other-info, #user-info, #get-ready-wrapper').show();
 }

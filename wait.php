@@ -81,10 +81,10 @@
 			</div>
 		</div>
 		<div class="row" id="get-ready-wrapper">
-			<span id="get-ready">Bersiap...!!!</span>
+			<span id="get-ready">Bersiap...</span>
 		</div>
 		<div class="row" id="done-wrapper">
-			<button id="done" onclick="done()">Tutup</button>
+			<button id="done" class="col" onclick="done()">Tutup</button>
 		</div>
 	</div>
 <?php include './global/footer.php';?>
