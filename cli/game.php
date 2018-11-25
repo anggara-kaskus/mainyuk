@@ -51,9 +51,7 @@ if (!empty($matchData)) {
 		$publishData['enemyScore'] = $matchData['score'][$enemyUserId];
 		// rank
 		$game->publish($channelId, json_encode($publishData));
-
-		$this->memcached->delete('ingame_' . $userId);
-		$this->memcached->delete('ingame_' . $enemyUserId);
+		$game->unlockUsers($userId, $enemyUserId);
 	}
 
 	echo "Game finished\n";
@@ -137,6 +135,12 @@ class Game
 		}
 
 		return false;
+	}
+
+	public function unlockUsers($userId, $enemyUserId)
+	{
+		$this->memcached->delete('ingame_' . $userId);
+		$this->memcached->delete('ingame_' . $enemyUserId);		
 	}
 
 	private function sendCurl($path, $method = 'POST', $postBody = '')
