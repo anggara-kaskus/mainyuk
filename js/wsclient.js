@@ -31,7 +31,8 @@ function createClient(channel)
 						$('.selected').addClass('wrong').removeClass('selected');
 						$('.option' + json.index + '_' + json.correctAnswer).addClass('correct').removeClass('selected');
 					}
-					$('#timer').hide();
+					clearTimeout(tid);
+					$('#timer').text('');
 					$('#myScore').text('Skor Anda: ' + jsonData.myScore);
 					$('#enemyScore').text('Skor Lawan: ' + jsonData.enemyScore);
 					$('#scores').show();
@@ -45,7 +46,7 @@ function createClient(channel)
 						$('#get-ready').text('Pertandingan Seri');
 					}
 
-					$('#other-info, #user-info').hide();
+					$('#other-info, #user-info, #game-ui').hide();
 					$('#match-found').show();
 				break;
 			}
@@ -66,7 +67,6 @@ function displayResult(jsonData) {
 	$('#question-msg').html(jsonData.q);
 	$('#extra-life').html(jsonData.ext);
 	$('#question').removeClass('answered');
-	clearTimeout(tid);
 
 	var buttons = '';
 	for (i in jsonData.o) {
@@ -155,7 +155,7 @@ function displayQuestion(question) {
 	token = question.token;
 	index = question.index;
 
-	$('#other-info, #user-info, #match-found').hide();
+	$('#other-info, #user-info, #match-found, #scores').hide();
 	var html = '<div class="row"><div class="col question">' + question.question + '</div></div>';
 	for (i in question.options) {
 		option = question.options[i];
