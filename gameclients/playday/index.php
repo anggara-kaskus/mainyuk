@@ -153,6 +153,11 @@
 			padding: 3px;
 			color: #666;
 		}
+
+		.row-btn:after {
+			display: block;
+			clear: both;
+		}
 	</style>
 </head>
 <body oncontextmenu="return false;" onselect="return false;" unselectable="on" onselectstart="return false;" onmousedown="return false;">
@@ -171,7 +176,10 @@
 			<div id="question" class="correct">
 				<h3 id="question-msg">Question Lorem ipsum dolor sit amet</h3>
 				<div id="button-wrapper">
-					<button class="correct" onclick="	startVibrate([200, 50, 200]);">Vibrate Test</button>
+					<div class="row-btn">
+						<button class="correct" onclick="startVibrate([200, 50, 200]);">Vibrate Test</button>
+						<button class="toggles">&nbsp;</button>
+					</div>
 					<button class="selected" onclick="toggleFullScreen()">Fullscreen</button>
 					<button onclick="startVibrate(1000)">Vibrate</button>
 					<button onclick="init()">Initialize</button>
