@@ -150,7 +150,8 @@ function displayQuestion(question) {
 		html += '<div class="row"><a href="javascript:answer(\'' + i +'\');" class="col options option'+ index + '_' + i +'">' + option + '</a></div>';
 	}
 	$('#timer').text('10').show();
-	$('#question-wrapper').html(html).show();
+	$('#question-wrapper').html(html)
+	$('#game-ui').show();
 	countdown();
 }
 
@@ -158,7 +159,10 @@ function countdown()
 {
 	var time = parseInt($('#timer').text()) - 1;
 	$('#timer').text(time);
-	tid = setTimeout(countdown, 1000);
+
+	if (time > 0) {
+		tid = setTimeout(countdown, 1000);
+	}
 }
 
 function showMatched(json) {
